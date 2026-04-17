@@ -1,0 +1,80 @@
+<?php
+$titulo = 'Crear cuenta · FIKA';
+$pagina = 'registro';
+require_once 'includes/db.php';
+require_once 'includes/auth.php';
+
+$errores = [];
+$datos   = ['nombre' => '', 'email' => '', 'telefono' => ''];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $datos['nombre']   = trim($_POST['nombre']   ?? '');
+    $datos['email']    = trim($_POST['email']    ?? '');
+    $datos['telefono'] = trim($_POST['telefono'] ?? '');
+    $password  = $_POST['password']  ?? '';
+    $password2 = $_POST['password2'] ?? '';
+
+    if ($datos['nombre'] === '')                                   $errores[] = 'El nombre es obligatorio.';
+    if (!filter_var($datos['email'], FILTER_VALIDATE_EMAIL))       $errores[] = 'El email no es válido.';
+    if (strlen($password) < 6)                                     $errores[] = 'La contraseña debe tener al menos 6 caracteres.';
+    if ($password !== $password2)                                  $errores[] = 'Las contraseñas no coinciden.';
+
+    if (!$errores) {
+        // ¿Ya existe ese email?
+        $check = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
+        $check->execute([$datos['email']]);
+        if ($check->fetch()) {
+            $errores[] = 'Ya existe una cuenta con ese email.';
+        } else {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, email, password, telefono)
+                                   VALUES (?, ?, ?, ?)");
+            $stmt->execute([$datos['nombre'], $datos['email'], $hash, $datos['telefono']]);
+            flash_set('exito', '¡Cuenta creada! Ya puedes iniciar sesión.');
+            header('Location: login.php'); exit;
+        }
+    }
+}
+
+include 'includes/header.php';
+?>
+
+<div class="container">
+    <div class="form-card fade-in">
+        <h2>Crear cuenta</h2>
+
+        <?php if ($errores): ?>
+            <div class="alerta alerta-error">
+                <?= implode('<br>', array_map('e', $errores)) ?>
+            </div>
+        <?php endif; ?>
+
+        <form method="post" id="form-registro" novalidate>
+            <div class="form-grupo">
+                <label>Nombre completo</label>
+                <input type="text" name="nombre" value="<?= e($datos['nombre']) ?>" required>
+            </div>
+            <div class="form-grupo">
+                <label>Email</label>
+                <input type="email" name="email" value="<?= e($datos['email']) ?>" required>
+            </div>
+            <div class="form-grupo">
+                <label>Teléfono (opcional)</label>
+                <input type="tel" name="telefono" value="<?= e($datos['telefono']) ?>">
+            </div>
+            <div class="form-grupo">
+                <label>Contraseña</label>
+                <input type="password" name="password" required minlength="6">
+            </div>
+            <div class="form-grupo">
+                <label>Repetir contraseña</label>
+                <input type="password" name="password2" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primario" style="width:100%;">Crear cuenta</button>
+        </form>
+
+        <p class="form-ayuda">¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></p>
+    </div>
+</div>
+
+<?php include 'includes/footer.php'; ?>
