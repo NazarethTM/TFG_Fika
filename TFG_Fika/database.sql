@@ -24,17 +24,19 @@ CREATE TABLE reservas_mesas (
     id_reserva INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_mesa INT NOT NULL,
+    
     fecha DATE NOT NULL,
     hora_inicio TIME NOT NULL,
     hora_fin TIME NOT NULL,
-    estado ENUM('confirmada','cancelada') DEFAULT 'confirmada',
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
-        ON DELETE CASCADE,
-        
+    duracion_min INT NOT NULL,
+    estado ENUM('activa','cancelada') DEFAULT 'activa',
+    
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_modificacion TIMESTAMP NULL,
+    
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (id_mesa) REFERENCES mesas(id_mesa)
-        ON DELETE CASCADE
 );
 
 -- CLASES DE REPOSTERÍA
