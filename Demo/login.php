@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../includes/auth.php';
-requiere_admin();
+require_admin();
 $activa = $activa ?? '';
 ?>
 <!DOCTYPE html>
