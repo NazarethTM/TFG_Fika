@@ -1,0 +1,28 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Configuración local con secretos (NUNCA subir)
+config/config.local.php
+.env
+
+# Logs y temporales
+*.log
+*.tmp
+*.cache
+
+# Uploads en runtime
+public/uploads/
+
+# Carpetas de pruebas
+Demo/
+test_local/
+
+# Archivos de XAMPP
+.htaccess.bak

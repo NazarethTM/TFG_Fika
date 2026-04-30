@@ -1,0 +1,85 @@
+<h2 class="sr-only">Árbol de carpetas del proyecto Fika con la responsabilidad de cada archivo coloreada por persona del equipo.</h2>
+
+<div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1rem;">
+  <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 4px; text-transform: uppercase; letter-spacing: 0.6px;">Estructura del repositorio</p>
+  <h3 style="font-size: 18px; font-weight: 500; margin: 0 0 14px;">TFG_FIKA / · 22 archivos</h3>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 12px;">
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 9px; height: 9px; border-radius: 2px; background: var(--color-text-secondary); opacity: .55;"></span>Común</span>
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 9px; height: 9px; border-radius: 2px; background: #1D9E75;"></span>Naza · mesas</span>
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 9px; height: 9px; border-radius: 2px; background: #D4537E;"></span>Laura · cursos</span>
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 9px; height: 9px; border-radius: 2px; background: #D85A30;"></span>Ken · pedidos + chat</span>
+  </div>
+
+  <pre style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; line-height: 1.7; margin: 0; background: transparent; color: var(--color-text-primary); white-space: pre-wrap; word-break: break-word;">
+<span style="color: var(--color-text-secondary);">📁</span> <b>TFG_FIKA/</b>
+│
+├─ <span style="color: var(--color-text-secondary);">📁</span> <b>database/</b>
+│   └─ fika.sql                        <span style="color: var(--color-text-tertiary);">esquema SQL (ya lo tenéis)</span>
+│
+├─ <span style="color: var(--color-text-secondary);">📁</span> <b>config/</b>                          <span style="color: var(--color-text-tertiary);">no tocar sin avisar</span>
+│   ├─ config.php                      <span style="color: var(--color-text-tertiary);">BBDD, BASE_URL, sesión</span>
+│   └─ db.php                          <span style="color: var(--color-text-tertiary);">conexión PDO</span>
+│
+├─ <span style="color: var(--color-text-secondary);">📁</span> <b>includes/</b>                        <span style="color: var(--color-text-tertiary);">piezas reutilizables</span>
+│   ├─ auth.php                        <span style="color: var(--color-text-tertiary);">login, registro, roles</span>
+│   ├─ funciones.php                   <span style="color: var(--color-text-tertiary);">e(), redirigir(), precio()</span>
+│   ├─ header.php                      <span style="color: var(--color-text-tertiary);">cabecera HTML</span>
+│   ├─ navbar.php                      <span style="color: var(--color-text-tertiary);">barra de navegación</span>
+│   └─ footer.php                      <span style="color: var(--color-text-tertiary);">cierre HTML</span>
+│
+├─ <span style="color: var(--color-text-secondary);">📁</span> <b>public/</b>                          <span style="color: var(--color-text-tertiary);">lo que ve el navegador</span>
+│   │
+│   ├─ index.php                       <span style="color: var(--color-text-tertiary);">home pública</span>
+│   ├─ login.php · registro.php · logout.php
+│   ├─ <span style="color: #D4537E;">nosotros.php                     · Laura</span>
+│   │
+│   ├─ <span style="color: var(--color-text-secondary);">📁</span> css/style.css                  <span style="color: var(--color-text-tertiary);">estilos comunes</span>
+│   ├─ <span style="color: var(--color-text-secondary);">📁</span> js/main.js                     <span style="color: var(--color-text-tertiary);">JS común</span>
+│   ├─ <span style="color: var(--color-text-secondary);">📁</span> img/                           <span style="color: var(--color-text-tertiary);">logo, plano del local</span>
+│   │
+│   ├─ <span style="color: var(--color-text-secondary);">📁</span> <span style="color: #1D9E75;"><b>mesas/</b>                       · Naza</span>
+│   │   ├─ <span style="color: #1D9E75;">reservar.php                  mapa interactivo</span>
+│   │   ├─ <span style="color: #1D9E75;">procesar_reserva.php          guardar reserva</span>
+│   │   ├─ <span style="color: #1D9E75;">mis_reservas.php              listado del usuario</span>
+│   │   ├─ <span style="color: #1D9E75;">cancelar.php                  cambiar a 'cancelada'</span>
+│   │   ├─ <span style="color: #1D9E75;">api_disponibilidad.php        JSON para el mapa</span>
+│   │   └─ <span style="color: #1D9E75;">mapa.js                       lógica del mapa</span>
+│   │
+│   ├─ <span style="color: var(--color-text-secondary);">📁</span> <span style="color: #D4537E;"><b>cursos/</b>                      · Laura</span>
+│   │   ├─ <span style="color: #D4537E;">listado.php                   catálogo público</span>
+│   │   ├─ <span style="color: #D4537E;">detalle.php                   ?id=X</span>
+│   │   ├─ <span style="color: #D4537E;">inscribirse.php               procesar inscripción</span>
+│   │   ├─ <span style="color: #D4537E;">mis_cursos.php                listado del usuario</span>
+│   │   └─ <span style="color: #D4537E;">cancelar.php                  cancelar inscripción</span>
+│   │
+│   ├─ <span style="color: var(--color-text-secondary);">📁</span> <span style="color: #D85A30;"><b>pedidos/</b>                     · Ken</span>
+│   │   ├─ <span style="color: #D85A30;">carta.php                     catálogo de productos</span>
+│   │   ├─ <span style="color: #D85A30;">carrito.php                   ver carrito</span>
+│   │   ├─ <span style="color: #D85A30;">procesar_carrito.php          añadir/quitar</span>
+│   │   ├─ <span style="color: #D85A30;">confirmar.php                 cerrar pedido</span>
+│   │   └─ <span style="color: #D85A30;">mis_pedidos.php               historial</span>
+│   │
+│   ├─ <span style="color: var(--color-text-secondary);">📁</span> <span style="color: #D85A30;"><b>chatbot/</b>                     · Ken</span>
+│   │   ├─ <span style="color: #D85A30;">widget.php                    chat flotante</span>
+│   │   └─ <span style="color: #D85A30;">responder.php                 endpoint a la API IA</span>
+│   │
+│   └─ <span style="color: var(--color-text-secondary);">📁</span> <b>admin/</b>                         <span style="color: var(--color-text-tertiary);">cada uno su módulo</span>
+│       ├─ index.php                   <span style="color: var(--color-text-tertiary);">dashboard</span>
+│       ├─ <span style="color: #1D9E75;">mesas.php · reservas.php      · Naza</span>
+│       ├─ <span style="color: #D4537E;">cursos.php · inscripciones.php · Laura</span>
+│       └─ <span style="color: #D85A30;">productos.php · pedidos.php · chat.php  · Ken</span>
+│
+├─ <span style="color: var(--color-text-secondary);">📁</span> <b>docs/</b>                            <span style="color: var(--color-text-tertiary);">memoria + capturas</span>
+│   ├─ memoria/
+│   └─ capturas/
+│
+├─ .gitignore
+└─ README.md                           <span style="color: var(--color-text-tertiary);">instrucciones + workflow Git</span>
+</pre>
+</div>
+
+<div style="background: var(--color-background-info); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 1rem;">
+  <p style="font-size: 12px; color: var(--color-text-info); margin: 0 0 4px; font-weight: 500;">Lo más importante de esta estructura</p>
+  <p style="font-size: 13px; line-height: 1.55; margin: 0;">Las carpetas comunes (<code>config</code>, <code>includes</code>) las toca cualquiera, pero con cuidado. Las carpetas de cada uno (<code>mesas</code>, <code>cursos</code>, <code>pedidos</code>, <code>chatbot</code>) son territorio personal: cada uno crea ahí los archivos que necesite sin pisar al otro. La carpeta <code>admin</code> está repartida por archivos: cada uno crea solo los suyos.</p>
+</div>
