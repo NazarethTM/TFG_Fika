@@ -1,0 +1,33 @@
+/* ============================================
+   Fika · estilos personalizados sobre Bootstrap
+   ============================================ */
+
+body {
+    background: #faf6f1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #2b211a;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+main {
+    min-height: 70vh;
+}
+
+.card {
+    border: 1px solid #e8e0d4;
+    transition: transform .15s ease;
+}
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Espacio para añadir estilos específicos de cada módulo.
+   Si son muchos, mejor crear archivos separados:
+     css/mesas.css
+     css/cursos.css
+     css/admin.css
+   y enlazarlos solo en las páginas que los necesiten. */
