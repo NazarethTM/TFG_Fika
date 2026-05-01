@@ -1,33 +1,364 @@
-/* ============================================
-   Fika · estilos personalizados sobre Bootstrap
-   ============================================ */
+/* =========================================================
+   Fika · style.css
+   Estética cálida inspirada en el local pixel art
+   Paleta basada en el trabajo previo de Laura
+   ========================================================= */
 
+:root {
+    --cafe-oscuro: #3e2723;
+    --cafe-medio:  #6f4e37;
+    --cafe-claro:  #b08968;
+    --crema:       #f5e6d3;
+    --crema-suave: #faf3e7;
+    --terracota:   #c97b63;
+    --terracota-h: #a85e48;
+    --verde-hoja:  #6b8e4e;
+    --texto:       #2d1f1a;
+    --gris-suave:  #efe7dd;
+    --sombra:      0 6px 20px rgba(62, 39, 35, 0.12);
+    --sombra-hover:0 12px 30px rgba(62, 39, 35, 0.20);
+}
+
+/* ---------- Tipografía ---------- */
 body {
-    background: #faf6f1;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #2b211a;
+    font-family: 'Poppins', system-ui, sans-serif;
+    background: var(--crema-suave);
+    color: var(--texto);
+    line-height: 1.6;
 }
 
-.navbar-brand {
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--cafe-oscuro);
+    font-weight: 700;
+}
+
+.fuente-decorativa {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+}
+
+/* ---------- Navbar ---------- */
+.navbar-cafe {
+    background: var(--cafe-oscuro);
+    box-shadow: var(--sombra);
+}
+.navbar-cafe .navbar-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--crema) !important;
+}
+.navbar-cafe .nav-link,
+.navbar-cafe .dropdown-toggle {
+    color: var(--crema) !important;
+    transition: color .2s ease;
+}
+.navbar-cafe .nav-link:hover,
+.navbar-cafe .nav-link.active {
+    color: var(--terracota) !important;
+}
+.navbar-cafe .dropdown-menu {
+    background: #fff;
+    border: 1px solid var(--gris-suave);
+}
+.navbar-cafe .dropdown-item:hover {
+    background: var(--crema-suave);
+    color: var(--cafe-oscuro);
+}
+
+/* ---------- Hero con imagen del local ---------- */
+.hero {
+    position: relative;
+    color: #fff;
+    padding: 7rem 1rem 8rem;
+    text-align: center;
+    overflow: hidden;
+    background: var(--cafe-oscuro);
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(62,39,35,0.78), rgba(62,39,35,0.55)),
+        url('../img/fika_local.png') center/cover no-repeat;
+    /* Si no existe la imagen, queda solo el degradado oscuro */
+    z-index: 0;
+}
+.hero > .container {
+    position: relative;
+    z-index: 1;
+}
+.hero h1 {
+    color: #fff;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    margin-bottom: 1rem;
+}
+.hero .lead {
+    font-size: 1.15rem;
+    max-width: 720px;
+    margin: 1rem auto;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+.hero-tagline {
+    display: inline-block;
+    background: rgba(245, 230, 211, 0.15);
+    backdrop-filter: blur(4px);
+    color: var(--crema);
+    padding: .4rem 1rem;
+    border-radius: 50rem;
+    font-size: .85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(245, 230, 211, 0.25);
+}
+
+/* ---------- Botones ---------- */
+.btn-cafe {
+    background: var(--cafe-medio);
+    border-color: var(--cafe-medio);
+    color: #fff;
+    border-radius: 50rem;
+    padding: 0.6rem 1.6rem;
     font-weight: 600;
-    font-size: 1.4rem;
+    transition: all .25s ease;
+}
+.btn-cafe:hover {
+    background: var(--cafe-oscuro);
+    border-color: var(--cafe-oscuro);
+    color: var(--crema);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover);
 }
 
-main {
-    min-height: 70vh;
+.btn-terracota {
+    background: var(--terracota);
+    border-color: var(--terracota);
+    color: #fff;
+    border-radius: 50rem;
+    padding: .6rem 1.6rem;
+    font-weight: 600;
+    transition: all .25s ease;
+}
+.btn-terracota:hover {
+    background: var(--terracota-h);
+    border-color: var(--terracota-h);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover);
 }
 
+.btn-outline-light:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #fff;
+    color: #fff;
+}
+
+/* ---------- Cards ---------- */
 .card {
-    border: 1px solid #e8e0d4;
-    transition: transform .15s ease;
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--sombra);
+    transition: transform .3s ease, box-shadow .3s ease;
+    height: 100%;
 }
 .card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-hover);
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    background: var(--crema);
+}
+.card-img-placeholder {
+    height: 200px;
+    background: linear-gradient(135deg, var(--cafe-claro), var(--cafe-medio));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--crema);
+    font-size: 3rem;
+}
+.precio {
+    color: var(--terracota);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+.badge-nivel {
+    background: var(--cafe-claro);
+    color: #fff;
+    border-radius: 50rem;
+    padding: .35rem .8rem;
+    font-size: .75rem;
+}
+.badge-categoria {
+    background: var(--verde-hoja);
+    color: #fff;
+    border-radius: 50rem;
+    padding: .3rem .8rem;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
 }
 
-/* Espacio para añadir estilos específicos de cada módulo.
-   Si son muchos, mejor crear archivos separados:
-     css/mesas.css
-     css/cursos.css
-     css/admin.css
-   y enlazarlos solo en las páginas que los necesiten. */
+/* ---------- Sección título ---------- */
+.section-title {
+    text-align: center;
+    margin: 4rem 0 2.5rem;
+}
+.section-title h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: .8rem;
+}
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--terracota);
+    border-radius: 50rem;
+}
+.section-title p {
+    color: var(--cafe-medio);
+    max-width: 600px;
+    margin: 0.8rem auto 0;
+}
+
+/* ---------- Ventajas (3 columnas con icono) ---------- */
+.ventaja-icono {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--crema);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--cafe-oscuro);
+}
+
+/* ---------- Estado vacío (sin productos / sin cursos) ---------- */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #fff;
+    border: 2px dashed var(--cafe-claro);
+    border-radius: 1rem;
+    color: var(--cafe-medio);
+}
+.empty-state i {
+    font-size: 3rem;
+    color: var(--cafe-claro);
+    margin-bottom: 1rem;
+}
+
+/* ---------- Login / Register ---------- */
+.auth-card {
+    max-width: 460px;
+    margin: 4rem auto;
+    background: #fff;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: var(--sombra-hover);
+}
+.auth-card .auth-header {
+    background: var(--cafe-oscuro);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem 1.5rem;
+}
+.auth-card .auth-header i {
+    font-size: 2.5rem;
+    color: var(--terracota);
+}
+.auth-card .auth-header h2 {
+    color: #fff;
+    margin-top: .5rem;
+    margin-bottom: 0;
+}
+.auth-card .auth-body {
+    padding: 2rem;
+}
+.form-control:focus {
+    border-color: var(--cafe-claro);
+    box-shadow: 0 0 0 .25rem rgba(176, 137, 104, .25);
+}
+
+/* ---------- CTA ---------- */
+.cta-banner {
+    background: var(--cafe-oscuro);
+    color: var(--crema);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.cta-banner h2 { color: #fff; }
+.cta-banner::before {
+    content: '☕';
+    position: absolute;
+    font-size: 12rem;
+    opacity: 0.05;
+    right: -2rem;
+    top: -2rem;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    background: var(--cafe-oscuro);
+    color: var(--crema);
+    padding: 3rem 0 1.5rem;
+}
+.footer h5 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.footer a {
+    color: var(--crema);
+    text-decoration: none;
+    transition: color .2s ease;
+}
+.footer a:hover {
+    color: var(--terracota);
+}
+.footer ul li {
+    padding: .25rem 0;
+}
+.footer .copy {
+    border-top: 1px solid rgba(245,230,211,0.15);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: .85rem;
+    color: var(--cafe-claro);
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes subir {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.animar { animation: subir .6s ease both; }
+.animar.delay-1 { animation-delay: .1s; }
+.animar.delay-2 { animation-delay: .2s; }
+.animar.delay-3 { animation-delay: .3s; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .hero { padding: 4rem 1rem 5rem; }
+    .cta-banner { padding: 2rem 1rem; }
+}
