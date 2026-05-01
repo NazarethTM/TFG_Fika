@@ -29,7 +29,7 @@ $info = $stmt->fetch();
 
 if ($info['inscritos'] >= $info['cupo_maximo']) {
     setMensaje('warning', 'Este curso está completo.');
-    redirigir('/cursos/listado.php');
+    redirigir('/cursos/cursos.php');
 }
 ```
 
