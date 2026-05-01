@@ -9,7 +9,7 @@
 // ---------- URL BASE ----------
 // Cambiad esta línea según donde tengáis el proyecto en XAMPP.
 // Si lo ponéis en C:\xampp\htdocs\TFG_FIKA, queda así:
-define('BASE_URL', 'http://localhost/TFG_FIKA/public');
+define('BASE_URL', 'http://localhost/FIKA/TFG_Fika/public');
 
 // ---------- BASE DE DATOS ----------
 define('DB_HOST', 'localhost');

@@ -1,10 +1,10 @@
 <?php
 $titulo = 'Cursos';
-require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/../../includes/header.php';
 
+$pdo = getDB();
 $mensaje = ''; $tipo='success';
 
-// Mensajes de error que pueden venir desde checkout_curso.php
 $errores = [
     'no_existe' => 'El curso seleccionado ya no está disponible.',
     'completo'  => 'Lo sentimos, ese curso está completo.',
@@ -14,7 +14,7 @@ if (isset($_GET['error']) && isset($errores[$_GET['error']])) {
     $tipo = 'warning';
 }
 
-// Listar cursos
+
 $cursos = $pdo->query("
     SELECT c.*,
            (SELECT COUNT(*) FROM inscripciones i WHERE i.curso_id = c.id AND i.estado <> 'cancelada') AS ocupados
@@ -23,11 +23,10 @@ $cursos = $pdo->query("
     ORDER BY c.fecha_inicio ASC
 ")->fetchAll();
 
-// Si está logueado, qué cursos ya tiene PAGADOS
 $misCursosPagados = [];
 if (estaLogueado()) {
     $stmt = $pdo->prepare("SELECT curso_id FROM inscripciones WHERE usuario_id=:u AND pagado=1");
-    $stmt->execute([':u'=>$_SESSION['usuario_id']]);
+    $stmt->execute([':u'=>$_SESSION['user_id']]);
     $misCursosPagados = array_column($stmt->fetchAll(), 'curso_id');
 }
 ?>
@@ -121,4 +120,4 @@ if (estaLogueado()) {
     <?php endif; ?>
 </section>
 
-<?php require_once __DIR__ . '/includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

@@ -10,7 +10,7 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/index.php">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/nosotros.php">Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/cursos/listado.php">Cursos</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/cursos/cursos.php">Cursos</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/pedidos/carta.php">Carta</a></li>
                 <?php if (estaLogueado()): ?>
                     <li class="nav-item">
