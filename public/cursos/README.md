@@ -7,7 +7,7 @@
 
 | Archivo | Para qué sirve |
 |---|---|
-| `listado.php` | Página pública con todos los cursos activos. Tarjetas Bootstrap con título, fecha, precio, plazas. |
+| `cursos.php` | Página pública con todos los cursos activos. Tarjetas Bootstrap con título, fecha, precio, plazas. |
 | `detalle.php?id=X` | Página de un curso concreto. Muestra info completa y botón de inscripción. |
 | `inscribirse.php` | Recibe POST con `curso_id`, valida cupo, crea inscripción. |
 | `mis_cursos.php` | Lista los cursos a los que está inscrito el usuario logueado. |
