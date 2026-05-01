@@ -71,3 +71,18 @@ function hora(string $hora): string
 {
     return substr($hora, 0, 5);
 }
+
+/**
+ * Convierte una duración en minutos a texto legible.
+ *   90  -> "1h 30min"
+ *   120 -> "2 h"
+ *   45  -> "45 min"
+ */
+function duracionTexto(?int $minutos): string
+{
+    if (!$minutos || $minutos <= 0) return '';
+    if ($minutos < 60) return $minutos . ' min';
+    $h = intdiv($minutos, 60);
+    $m = $minutos % 60;
+    return $m === 0 ? "{$h} h" : "{$h}h {$m}min";
+}
