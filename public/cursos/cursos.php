@@ -55,7 +55,9 @@ if (estaLogueado()) {
             ?>
             <div class="col-md-6 col-lg-4" id="curso-<?= $c['id'] ?>">
                 <div class="card h-100">
-                    <img src="https://source.unsplash.com/600x400/?coffee,barista,<?= urlencode($c['titulo']) ?>"
+                    <img src="<?= $c['imagen']
+                                ? e(BASE_URL . '/assets/img/cursos/' . $c['imagen'])
+                                : 'https://source.unsplash.com/600x400/?coffee,barista,' . urlencode($c['titulo']) ?>"
                          class="card-img-top" alt="<?= e($c['titulo']) ?>">
                     <div class="card-body d-flex flex-column">
                         <span class="badge-nivel"><?= e($c['nivel']) ?></span>
